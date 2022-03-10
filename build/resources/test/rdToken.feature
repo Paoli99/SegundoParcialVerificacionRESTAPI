@@ -12,18 +12,11 @@ Feature: Project
 
 
     When envio DELETE request a la /api/authentication/token.json con el header
-    """
 
     """
+    
+    """
+
 
 
     Then el codigo de respuesta deberia ser 200
-    And el expected body deberia ser
-    """
-      {
-        "TokenString": "IGNORE",
-        "UserEmail": "paola_api@api.com",
-        "ExpirationTime": "IGNORE"
-      }
-    """
-

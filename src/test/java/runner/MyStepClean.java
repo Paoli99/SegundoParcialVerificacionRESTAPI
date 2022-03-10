@@ -69,7 +69,7 @@ public class MyStepClean {
     @When("envio {} request a la {} con el header")
     public void envioDELETERequestALaApiAuthenticationTokenJsonConElHeader(String method,String url,String header) {
         requestInformation.setUrl(Configuration.host+replaceVar(url))
-                .setHeaders("Header", header);
+                .setHeaders("token", header);
         response= FactoryRequest.make(method).send(requestInformation);
     }
 
