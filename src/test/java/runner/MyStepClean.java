@@ -74,4 +74,12 @@ public class MyStepClean {
     }
 
 
+    @When("envio {} request a la {} con el header")
+    public void envioDELETERequestALaApiAuthenticationTokenJsonConElHeader() {
+        RequestInformation tokenRequest= new RequestInformation();
+        tokenRequest.setUrl(Configuration.host+"/api/authentication/token.json");
+        response=FactoryRequest.make("get").send(tokenRequest);
+        String token= response.then().extract().path("TokenString");
+        requestInformation.setHeaders("Token", token);
+    }
 }
