@@ -66,6 +66,14 @@ public class MyStepClean {
                 .body(attribute,equalTo(expectedValue));
     }
 
+    @When("envio {} request a la {} con el header")
+    public void envioDELETERequestALaApiAuthenticationTokenJsonConElHeader(String method,String url,String header) {
+        requestInformation.setUrl(Configuration.host+replaceVar(url))
+                .setHeaders("Header", header);
+        response= FactoryRequest.make(method).send(requestInformation);
+    }
+
+
     private String replaceVar(String value){
         for (String attribute: dynamicVar.keySet() ) {
             value=value.replace(attribute,dynamicVar.get(attribute));
@@ -73,13 +81,4 @@ public class MyStepClean {
         return value;
     }
 
-
-    @When("envio {} request a la {} con el header")
-    public void envioDELETERequestALaApiAuthenticationTokenJsonConElHeader() {
-        RequestInformation tokenRequest= new RequestInformation();
-        tokenRequest.setUrl(Configuration.host+"/api/authentication/token.json");
-        response=FactoryRequest.make("get").send(tokenRequest);
-        String token= response.then().extract().path("TokenString");
-        requestInformation.setHeaders("Token", token);
-    }
 }

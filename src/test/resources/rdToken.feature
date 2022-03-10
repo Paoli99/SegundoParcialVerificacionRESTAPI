@@ -15,6 +15,8 @@ Feature: Project
     """
 
     """
+
+
     Then el codigo de respuesta deberia ser 200
     And el expected body deberia ser
     """
@@ -25,4 +27,3 @@ Feature: Project
       }
     """
 
-  b95e4c1249394a62bff636b0c432555b
